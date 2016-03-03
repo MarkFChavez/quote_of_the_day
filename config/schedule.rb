@@ -1,5 +1,5 @@
 set :output, "#{path}/log/cron.log"
 
-every 1.minute do
+every :day, :at => "10am" do
   rake "generate_quote"
 end
