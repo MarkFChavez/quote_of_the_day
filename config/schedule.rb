@@ -1,6 +1,6 @@
 env :PATH, ENV["PATH"]
 set :output, "#{path}/log/cron.log"
 
-every :day, :at => "10am" do
+every :day, :at => "9pm" do
   rake "generate_quote"
 end
