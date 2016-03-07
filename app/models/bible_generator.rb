@@ -27,7 +27,9 @@ class BibleGenerator
   end
 
   def random_bible_verse
-    ["quote a", "quote b", "quote c"].sample
+    [
+      "Proverbs 24:33-34 (NIV) \n\n \"A little sleep, a little slumber, a little folding of the hands to rest -- and poverty will come on you like a thief and scarcity like an armed man.\""
+    ].sample
   end
 
   def response
