@@ -23,7 +23,11 @@ class WisdomGenerator
   end
 
   def random_quote
-    ["quote a", "quote b", "quote c"].sample
+    [
+      "\"quote a\" - author a", 
+      "\"quote b\" - author b", 
+      "\"quote c\" - author c", 
+    ].sample
   end
 
   def response
