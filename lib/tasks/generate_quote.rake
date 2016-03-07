@@ -1,21 +1,22 @@
 task generate_quote: :environment do
-  quote = WisdomGenerator.generate
   recipients = ["+639178574111", "+639165676550"]
   from = Rails.application.secrets.twilio_number
   auth_sid = Rails.application.secrets.auth_sid
   auth_token = Rails.application.secrets.auth_token
 
-  puts "SECRETS: #{Rails.application.secrets}"
+  puts "Starting JOB..."
+  puts "==============="
 
   @client = Twilio::REST::Client.new auth_sid, auth_token
+  body = ContentBuilder.build
 
   recipients.each do |recipient|
     @client.messages.create(
       from: from,
       to: recipient,
-      body: "\"#{quote}\""
+      body: body
     )
 
-    puts "sent an sms to #{recipient}"
+    puts "SMS sent to #{recipient}"
   end
 end
