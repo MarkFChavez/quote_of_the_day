@@ -6,20 +6,28 @@ class WisdomGenerator
   end
 
   def generate
-    return random_quote unless response.code == "200"
+    res = response
+    return random_quote unless res.code == "200"
 
-    quote_hash = JSON.parse(response.body)["contents"]["quotes"].first
-    quote_hash["quote"]
+    generate_quote(res)
   end
 
   private
+
+  def generate_quote(response)
+    quote_hash = JSON.parse(response.body)["contents"]["quotes"].first
+    text = quote_hash["quote"]
+    author = quote_hash["author"]
+
+    "\"#{text}\" - #{author}"
+  end
 
   def random_quote
     ["quote a", "quote b", "quote c"].sample
   end
 
   def response
-    uri = URI.parse ENDPOINT
+    uri = URI.parse(ENDPOINT)
     http = Net::HTTP.new(uri.host, uri.port)
     response = http.request(Net::HTTP::Get.new(uri.request_uri))
 
