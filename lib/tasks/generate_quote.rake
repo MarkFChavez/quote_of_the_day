@@ -1,5 +1,5 @@
 task generate_quote: :environment do
-  recipients = ["+639178574111", "+639165676550"]
+  recipients = ["+639178574111"]
   from = Rails.application.secrets.twilio_number
   auth_sid = Rails.application.secrets.auth_sid
   auth_token = Rails.application.secrets.auth_token
